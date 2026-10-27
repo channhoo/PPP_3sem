@@ -1,6 +1,6 @@
 """Тесты для модели аттрактора Лоренца."""
 
-from src.models.lorenz_model import LorenzModel
+from lab1_lorenz.src.models.lorenz_model import LorenzModel
 
 
 def test_initial_position():

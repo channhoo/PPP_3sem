@@ -2,9 +2,9 @@
 
 import tkinter as tk
 
-from src.models.lorenz_model import LorenzModel
-from src.renderers.renderer import Renderer
-from src.widgets.controls import ControlsPanel
+from lab1_lorenz.src.models.lorenz_model import LorenzModel
+from lab1_lorenz.src.renderers.renderer import Renderer
+from lab1_lorenz.src.widgets.controls import ControlsPanel
 
 
 class App:
