@@ -76,6 +76,7 @@ class App:
                     self.model.prev_y,
                     self.model.x,
                     self.model.y,
+                    z=self.model.z,
                 )
         self.root.after(16, self.update_loop)
 
