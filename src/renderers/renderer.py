@@ -4,7 +4,7 @@
 class Renderer:
     """Преобразует координаты модели в экранные и рисует след."""
 
-    def __init__(self, canvas, width=600, height=600, scale=10.0):
+    def __init__(self, canvas, width=600, height=600, scale=8.0):
         """Создаёт рендерер.
 
         Args:

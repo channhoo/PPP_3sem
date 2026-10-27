@@ -52,7 +52,7 @@ class ControlsPanel:
             bg="black",
             fg="white",
             highlightbackground="black",
-            length=400,
+            length=200,
         )
         scale.pack(side="left", fill="x", expand=True)
 
@@ -81,3 +81,32 @@ class ControlsPanel:
         if self.on_speed_change is not None:
             self.on_speed_change(int(float(value)))
         self._speed_label.config(text=f"{int(float(value))}")
+
+    def add_button(self, text, command):
+        """Добавляет кнопку в панель управления.
+
+        Args:
+            text: надпись на кнопке.
+            command: функция, вызываемая по нажатию.
+        """
+        tk.Button(
+            self.frame,
+            text=text,
+            command=command,
+            bg="#333",
+            fg="white",
+            activebackground="#555",
+            activeforeground="white",
+        ).pack(side="left", padx=5, pady=5)
+
+    def add_status_label(self):
+        """Добавляет метку статуса (пауза/работа) и возвращает её."""
+        self.status_label = tk.Label(
+            self.frame, text="Running", fg="#00ffcc", bg="black"
+        )
+        self.status_label.pack(side="left", padx=10)
+        return self.status_label
+
+    def set_status(self, text, color="#00ffcc"):
+        """Обновляет текст и цвет метки статуса."""
+        self.status_label.config(text=text, fg=color)
