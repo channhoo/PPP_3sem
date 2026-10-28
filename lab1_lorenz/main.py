@@ -1,6 +1,6 @@
 """Точка входа в программу: аттрактор Лоренца."""
 
-from lab1_lorenz.src.app import App
+from src.app import App
 
 
 def main():
