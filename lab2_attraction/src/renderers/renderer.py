@@ -4,7 +4,7 @@
 class Renderer:
     """Рисует частицы в виде кружков."""
 
-    def __init__(self, canvas, color="#00ffcc"):
+    def __init__(self, canvas, color="#ff69b4"):
         """Создаёт рендерер.
 
         Args:
@@ -35,18 +35,17 @@ class Renderer:
                 outline="",
             )
 
-    def draw_attractor(self, x, y, radius=10):
-        """Рисует точку притяжения.
+    def draw_attractors(self, points, radius=4):
+        """Рисует точки притяжения.
 
         Args:
-            x, y: координаты центра.
-            radius: радиус круга.
+            points: список кортежей (x, y).
+            radius: радиус маркера.
         """
-        self.canvas.create_oval(
-            x - radius,
-            y - radius,
-            x + radius,
-            y + radius,
-            outline="#ff0066",
-            width=2,
-        )
+        for x, y in points:
+            self.canvas.create_oval(
+                x - radius, y - radius,
+                x + radius, y + radius,
+                outline="#ff0066",
+                width=1,
+            )

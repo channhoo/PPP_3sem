@@ -7,19 +7,21 @@ import random
 class Particle:
     """Частица с позицией и скоростью."""
 
-    def __init__(self, x, y, vx=0.0, vy=0.0, radius=3):
+    def __init__(self, x, y, vx=0.0, vy=0.0, radius=3, target_index=0):
         """Создаёт частицу.
 
         Args:
             x, y: начальная позиция.
             vx, vy: начальная скорость.
             radius: радиус отрисовки.
+            target_index: индекс точки притяжения, к которой привязана частица.
         """
         self.x = x
         self.y = y
         self.vx = vx
         self.vy = vy
         self.radius = radius
+        self.target_index = target_index
 
     @classmethod
     def random(cls, width, height, radius=3):

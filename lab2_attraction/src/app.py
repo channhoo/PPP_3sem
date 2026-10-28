@@ -47,9 +47,7 @@ class App:
         """Один кадр: обновление модели + отрисовка."""
         self.system.update()
         self.renderer.clear()
-        self.renderer.draw_attractor(
-            self.system.attract_x, self.system.attract_y
-        )
+#        self.renderer.draw_attractors(self.system.attract_points)
         self.renderer.draw_particles(self.system.particles)
         self.root.after(16, self.update_loop)
 
