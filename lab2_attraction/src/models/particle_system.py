@@ -1,6 +1,7 @@
 """Система частиц с притяжением к центру и отталкиванием от мыши."""
 
 import random
+import math
 
 from .particle import Particle
 
@@ -24,13 +25,15 @@ class ParticleSystem:
         self.mouse_y = -1000
 
         # коэффициенты сил
-        self.attraction_k = 0.02
-        self.repulsion_k = 8000.0
-        self.damping = 0.97
+        self.attraction_k = 0.008
+        self.repulsion_k = 250.0
+        self.damping = 0.9
 
         self.particles = [
             Particle.random(width, height) for _ in range(count)
         ]
+
+        self.max_speed = 5.0
 
     def update(self, dt=1.0):
         """Обновляет позиции и скорости всех частиц.
@@ -54,11 +57,20 @@ class ParticleSystem:
             fx += self.repulsion_k * dx_rep / dist_rep_sq
             fy += self.repulsion_k * dy_rep / dist_rep_sq
 
+            fx += random.uniform(-0.05, 0.05)
+            fy += random.uniform(-0.05, 0.05)
+
             # обновляем скорость и позицию
             p.vx = (p.vx + fx * dt) * self.damping
             p.vy = (p.vy + fy * dt) * self.damping
             p.x += p.vx * dt
             p.y += p.vy * dt
+
+            # ограничение максимальной скорости
+            speed = math.hypot(p.vx, p.vy)
+            if speed > self.max_speed:
+                p.vx = p.vx / speed * self.max_speed
+                p.vy = p.vy / speed * self.max_speed
 
             # заворачиваем частицы на противоположную сторону
             if p.x < 0:
